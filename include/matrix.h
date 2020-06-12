@@ -7,7 +7,7 @@
 
 #define M_ASSERTS 
 
-typedef float m_element_t;
+typedef double m_element_t;
 typedef m_element_t  (*m_fn)(m_element_t);
 typedef struct matrix_t{
         size_t  rows;

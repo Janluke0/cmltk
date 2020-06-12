@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include "../include/logreg.h"
 
+#undef M_ASSERTS 
+
 int main(){
     matrix_t *X = M_load("datasets/breast_cancer.X.train.dat");
     matrix_t *Y = M_load("datasets/breast_cancer.y.train.dat");
