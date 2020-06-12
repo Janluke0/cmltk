@@ -69,7 +69,7 @@ int  LOGREG_train(LOGREG_model_t *model, float lambda, matrix_t *X,
         P = LOGREG_inference(model, X);
         loss = cross_entropy(P,y);
         M_free(P);
-        printf("IT:%d\tLOSS:%.10f\tLR:%.10f\tIMPROVMENT:%.10f\n",it,loss,lr,fabs(last_loss-loss)/lr);
+        printf("IT:%d\tLOSS:%.10f\tLR:%.10f\n",it,loss,lr);
     }while(it < max_it && ( fabs(last_loss-loss)/lr > loss_tol ));
     
     return it;
