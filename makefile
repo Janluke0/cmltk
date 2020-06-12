@@ -13,4 +13,4 @@ logreg.o:
 	gcc -c src/logreg.c $(FLAGS) -o obj/logreg.o
 
 matrix.o:
-	gcc  -c src/matrix.c $(FLAGS) -o obj/matrix.o
+	gcc -c src/matrix.c $(FLAGS) -o obj/matrix.o
