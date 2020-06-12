@@ -3,11 +3,6 @@
 #include <stdio.h>
 #include <math.h>
 
-#undef M_ASSERTS 
-
-m_element_t _array_mean(matrix_t *arr);
-
-
 
 m_element_t _array_mean(matrix_t *arr){
     m_element_t v = 0;
@@ -61,7 +56,7 @@ matrix_t *LOGREG_inference(LOGREG_model_t *m, matrix_t *X){
 #define T 100.
 int  LOGREG_train(LOGREG_model_t *model, float lambda, matrix_t *X, 
                             matrix_t *y, int max_it, double loss_tol){
-    float lr = 1., loss=0, last_loss=0;
+    m_element_t lr = 1., loss=0, last_loss=0;
     int it = 0;
     matrix_t *P; 
     do{
