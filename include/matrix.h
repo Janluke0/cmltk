@@ -5,7 +5,7 @@
 #define M_empty() malloc(sizeof(matrix_t))
 #define M_free(matrix) free(matrix->data);free(matrix)
 
-#define M_ASSERTS 
+//#define M_ASSERTS 
 
 typedef float m_element_t;
 typedef m_element_t  (*m_fn)(m_element_t);
