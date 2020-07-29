@@ -40,6 +40,11 @@ void main(){
     //M_print(D);
 }
 */
+void M_free(matrix_t *m) {
+        free(m->data);
+        free(m);
+}
+
 matrix_t *M_load(char *f_path){
     FILE *infile;
     matrix_t *res = M_empty();
@@ -50,11 +55,13 @@ matrix_t *M_load(char *f_path){
     }
     if(!fread(res,sizeof(size_t),2,infile)){
         puts("Error reading the file");
+        fclose(infile);
         return NULL;
     }
     res->data = malloc(sizeof(m_element_t)*res->cols*res->rows);
     if(!fread(res->data,sizeof(m_element_t),res->cols*res->rows,infile)){
         puts("Error reading the file");
+        fclose(infile);
         return NULL;
     }
     fclose(infile);
@@ -70,10 +77,12 @@ int M_store(matrix_t *m,char *f_path){
     }
     if(!fwrite(m,sizeof(size_t),2,outfile)){
         puts("Error writing the file");
+        fclose(outfile);
         return -1;
     }    
     if(!fwrite(m->data,sizeof(m_element_t),m->cols*m->rows,outfile)){
         puts("Error writing the file");
+        fclose(outfile);
         return -1;
     }
 
