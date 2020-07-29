@@ -14,7 +14,7 @@ int main(){
 
 
     LOGREG_model_t *model= LOGREG_new(X->cols);
-    LOGREG_train(model,0.001,X,Y,50000,0);//1e-10);
+    LOGREG_train(model,0.001,X,Y,50000, 1e-4);
     
     float train_acc = 100*accurancy(model, X, Y);
     printf("Train accurancy:%.2f%%\n", train_acc);

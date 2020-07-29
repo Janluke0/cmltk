@@ -63,14 +63,14 @@ int  LOGREG_train(LOGREG_model_t *model, float lambda, matrix_t *X,
         for(int i=0;i<T;i++)
             LOGREG_iteration(model,lr,lambda,X,y);
         it += T;       
-        //very stupid test with real dataset anyway. Not so bad but T must be tuned anyway
-        lr =  lr/(1. + (it/T)) ;
+        //very stupid test with real dataset anyway. Not so bad but T must be tuned 
+        lr = lr>loss_tol*10 ? lr/(1. + (it/T)) : lr ;
         last_loss = loss;
         P = LOGREG_inference(model, X);
         loss = cross_entropy(P,y);
         M_free(P);
         printf("IT:%d\tLOSS:%.10f\tLR:%.10f\n",it,loss,lr);
-    }while(it < max_it && ( fabs(last_loss-loss)/lr > loss_tol ));
+    }while(it < max_it && ( fabs(last_loss-loss) > loss_tol ));
     
     return it;
 }
