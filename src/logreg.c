@@ -64,7 +64,7 @@ int  LOGREG_train(LOGREG_model_t *model, float lambda, matrix_t *X,
             LOGREG_iteration(model,lr,lambda,X,y);
         it += T/2;       
         //very stupid test with real dataset anyway. Not so bad but T must be tuned 
-        lr = lr>loss_tol*10 ? lr/(1. + (it/T)) : lr ;
+        lr = lr>loss_tol*10 ? lr/(.1 + (it/T)) : lr*10;
         last_loss = loss;
         P = LOGREG_inference(model, X);
         loss = cross_entropy(P,y);
