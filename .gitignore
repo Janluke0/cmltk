@@ -53,3 +53,9 @@ Mkfile.old
 dkms.conf
 
 *.swp
+
+__pycache__
+*.py[cod]
+*$py.class
+
+.vscode
