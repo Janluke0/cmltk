@@ -3,9 +3,8 @@
 #include <stdlib.h>
 #define M_get(matrix,i,j) matrix->data[(i*matrix->cols)+j]
 #define M_empty() malloc(sizeof(matrix_t))
-#define M_free(matrix) free(matrix->data);free(matrix)
 
-#define M_ASSERTS 
+//#define M_ASSERTS 
 
 typedef double m_element_t;
 typedef m_element_t  (*m_fn)(m_element_t);
@@ -14,6 +13,8 @@ typedef struct matrix_t{
         size_t  cols;
         m_element_t *data;
 } matrix_t;
+
+void        M_free  (matrix_t *m);
 
 matrix_t*   M_load  (char *f_path);
 

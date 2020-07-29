@@ -26,9 +26,10 @@
 *.dll
 *.so
 *.so.*
-*.dylib
+*.dylib@
 
 # Executables
+bin/*
 *.exe
 *.out
 *.app
@@ -53,3 +54,9 @@ dkms.conf
 
 #vim temp files
 *.swp
+
+__pycache__
+*.py[cod]
+*$py.class
+
+.vscode
