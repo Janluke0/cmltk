@@ -9,6 +9,8 @@ typedef struct LOGREG_model_t{
         m_element_t bias;
 } LOGREG_model_t;
 
+typedef int (train_cb)(int,m_element_t,m_element_t);
+
 LOGREG_model_t*     LOGREG_new  (size_t features);
 
 //with L2 regularization
@@ -29,7 +31,8 @@ int     LOGREG_train    (LOGREG_model_t *model, // the result of training
                         matrix_t *X,    //observation matrix (m,n) 
                         matrix_t *y,    //labels vector (m,1)
                         int max_it, 
-                        double loss_tol);
+                        double loss_tol,
+                        train_cb* cb);
 
 m_element_t     cross_entropy   (matrix_t *P, //predictions 
                                 matrix_t *Y); //exptected

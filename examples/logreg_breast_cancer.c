@@ -3,7 +3,10 @@
 #include "../include/logreg.h"
 
 #undef M_ASSERTS 
-
+int callback(int it,m_element_t loss, m_element_t lr){
+     printf("IT:%d\tLOSS:%.10f\tLR:%.10f\n",it,loss,lr);
+     return 0;
+}
 int main(){
     matrix_t *X = M_load("datasets/breast_cancer.X.train.dat");
     matrix_t *Y = M_load("datasets/breast_cancer.y.train.dat");
@@ -14,7 +17,7 @@ int main(){
 
 
     LOGREG_model_t *model= LOGREG_new(X->cols);
-    LOGREG_train(model,0.001,X,Y,50000, 1e-4);
+    LOGREG_train(model,0.001,X,Y,50000, 1e-4, *callback);
     
     float train_acc = 100*accurancy(model, X, Y);
     printf("Train accurancy:%.2f%%\n", train_acc);
